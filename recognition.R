@@ -66,6 +66,8 @@ path <- commandArgs(trailingOnly = T)
 analyzedVoice <- analyzeWav(path)
 #control <- trainControl(method = "cv", number = 10)
 #model.forest <- train(label ~ ., data = file, method = "rf", metric = "Accuracy", trControl = control)
+modelPath <- 'model.forest.rds'
+file.path(getwd(), modelPath)
 model.forest <- readRDS('model.forest.rds')
 prediction <- predict(model.forest, analyzedVoice)
 print(prediction)

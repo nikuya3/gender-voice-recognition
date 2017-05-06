@@ -1,17 +1,16 @@
 # gender-voice-recognition
-Recognize gender by voice
+Building an R prediction model on a dataset from Kaggle, which contains vocal stats about male and female voices.
 
-Prediction model works with following recordings, which are of good quality: Erwin, Armin, L, Susanne, Frank, 
-It doesn't work with these bad recordings: Colbert 
+## Results 
 
-| File | Quality | Prediction correct |
-| - | - | - |
-| Angela | bad | yes |
-| Armin | good | yes |
-| Daenerys | bad | yes |
-| Erwin | good | yes |
-| Frank | good | yes |
-| L | bad | yes |
-| Stephen | bad | no |
-| Susanne | good | yes |
-| Tanya | bad | yes |
+| File | Language | Quality | Prediction correct |
+| - | - | - | - |
+| Angela | German | bad | yes |
+| Armin | German | good | yes |
+| Daenerys | English | bad | yes |
+| Erwin | German | good | yes |
+| Frank | English | good | yes |
+| L | English | bad | yes |
+| Stephen | English | bad | no |
+| Susanne | German | good | yes |
+| Tanya | English | bad | yes |
