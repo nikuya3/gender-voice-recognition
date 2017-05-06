@@ -5,7 +5,7 @@ Prediction model works with following recordings, which are of good quality: Erw
 It doesn't work with these bad recordings: Colbert 
 
 File | Quality | Prediction correct
-- | - | -
+_ | _ | _
 Angela | bad | yes
 Armin | good | yes
 Daenerys | bad | yes
