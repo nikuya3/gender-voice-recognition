@@ -5,7 +5,7 @@ library(caret)
 
 humanFrequency <- 280
 
-analyzeWav <- function(file, start = 0, end = 20) {
+analyzeWav <- function(file, start = 0, end = Inf) {
   wave <- file
   tuneWave <- readWave(file.path(getwd(), wave), from = start, to = end, units = "seconds")
   waveSpec <- spec(tuneWave, f = tuneWave@samp.rate, plot = F)
@@ -56,20 +56,17 @@ analyzeWav <- function(file, start = 0, end = 20) {
   obj
 }
 
-erwin <- analyzeWav('erwin.wav')
-control <- trainControl(method = "cv", number = 12)
+trainingModel <- function() {
+  file <- read.csv('voice.csv')
+  model.rf <- train(label ~ ., data = file, model = 'rf')
+  model.rf
+}
+
+path <- commandArgs(trailingOnly = T)
+analyzedVoice <- analyzeWav(path)
+#control <- trainControl(method = "cv", number = 10)
 #model.forest <- train(label ~ ., data = file, method = "rf", metric = "Accuracy", trControl = control)
 model.forest <- readRDS('model.forest.rds')
-predict(model.forest, obj)
-
-### -- ###
-
-imgPattern <- "tiff"
-#wavs <- list.files(pattern="wav$")
-detected <- autodetec(flist = wavs, it = imgPattern)
-sigDetected <- sig2noise(detected, mar = 0.04)
-selection <- sigDetected[ave(-sigDetected$SNR, FUN = rank) <= 5, ]
-params <- specan(selection)
-file <- read.csv('voice.csv')
-model.forest <- train(label ~ ., data = file, method = "rf", metric = "Accuracy", trControl = control)
-predict(model.forest, obj)
+prediction <- predict(model.forest, analyzedVoice)
+print(prediction)
+cat(prediction, file = 'prediction.txt')
