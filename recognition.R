@@ -1,7 +1,7 @@
 library(fftw)
 library(seewave)
 library(tuneR)
-library(caret)
+library(randomForest)
 
 humanFrequency <- 280
 
@@ -56,16 +56,9 @@ analyzeWav <- function(file, start = 0, end = Inf) {
   obj
 }
 
-trainingModel <- function() {
-  file <- read.csv('voice.csv')
-  model.rf <- train(label ~ ., data = file, model = 'rf')
-  model.rf
-}
-
 path <- commandArgs(trailingOnly = T)
 analyzedVoice <- analyzeWav(path)
-#control <- trainControl(method = "cv", number = 10)
-#model.forest <- train(label ~ ., data = file, method = "rf", metric = "Accuracy", trControl = control)
+#model.forest <- randomForest(label ~ ., data = file)
 modelPath <- 'model.forest.rds'
 file.path(getwd(), modelPath)
 model.forest <- readRDS('model.forest.rds')

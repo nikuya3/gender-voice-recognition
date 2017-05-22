@@ -1,5 +1,5 @@
 # gender-voice-recognition
-Building an R prediction model on a dataset from Kaggle, which contains vocal stats about male and female voices.
+Building an R prediction model using a [dataset from Kaggle](https://www.kaggle.com/primaryobjects/voicegender), which contains vocal stats about male and female voices.
 
 ## Results 
 
