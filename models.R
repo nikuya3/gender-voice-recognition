@@ -8,7 +8,7 @@ trials <- 20
 output <- 'output.txt'
 accuracies <- list()
 fastMethods <- c('rpart', 'knn')
-allMethods <- c('rpart', 'knn', 'C5.0', 'ctree', 'lda', 'svmLinear', 'rf')
+allMethods <- c('rpart', 'knn', 'glm', 'C5.0', 'ctree', 'lda', 'svmLinear', 'rf')
 for (trial in 1:trials) {
   print(paste0('Trial ', trial))
   training_set_indices <- sample(set_size, training_size)
